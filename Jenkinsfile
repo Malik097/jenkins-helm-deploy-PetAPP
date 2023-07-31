@@ -21,7 +21,7 @@ pipeline {
       stage('Build docker image'){
         steps{
           script {
-            def customImage = docker.build("malik097/veterinaryapp:${env.BUILD_NUMBER}", "./docker")
+            def customImage = docker.build("malik097/mypetclinic:${env.BUILD_NUMBER}", "./docker")
             docker.withRegistry('https://registry.hub.docker.com', 'dockerhub'){
             customImage.push()  
             }
@@ -37,7 +37,7 @@ pipeline {
             sh 'cp -R helm/* .'
             sh 'ls -ltrh'
             sh 'pwd'
-            sh '/usr/local/bin/helm upgrade --install veterinaryapp veterinaryapp  --set image.repository=malik097/veterinaryapp --set image.tag=${BUILD_NUMBER}'
+            sh '/usr/local/bin/helm upgrade --install petclinic-app mypetclinic --set image.repository=malik097/petclinic --set image.tag=${BUILD_NUMBER}'
           }
         }
 
