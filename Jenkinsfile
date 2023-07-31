@@ -37,7 +37,7 @@ pipeline {
             sh 'cp -R helm/* .'
             sh 'ls -ltrh'
             sh 'pwd'
-            sh '/usr/local/bin/helm upgrade --install veterinary-app veterinaryapp  --set image.repository=malik097/veterinaryapp --set image.tag=${BUILD_NUMBER}'
+            sh '/usr/local/bin/helm upgrade --install veterinaryapp veterinaryapp  --set image.repository=malik097/veterinaryapp --set image.tag=${BUILD_NUMBER}'
           }
         }
 
